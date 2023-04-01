@@ -20,8 +20,9 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-  @register
+  #@register
   Scenario: Register
+
     Given Get Login Page Url
     When Open register url
     And Input to Firstname textbox
@@ -31,3 +32,27 @@ Feature: Title of your feature
     And Input to comfirm password textbox
     When Click to register button
     Then Get register success message
+    
+  @register
+  Scenario Outline: Register
+  	# Link
+    Given Get Login Page Url
+    When Open register url
+    
+    # Textbox
+    And Input to "First name:" textbox with value "<FrirstName>"
+    And Input to "Last name:" textbox with value "<LastName>"
+    And Input to "Email:" textbox with value "<Email>"
+    And Input to "Password:" textbox with value "<Password>"
+    And Input to "Confirm password:" textbox with value "<Confirmpassword>"
+    
+    # Button
+    When Click to "register" button
+    
+    # Message
+    Then Success message displayed with "Your registration completed"
+    
+    Examples: 
+    |FrirstName	|LastName	|Email								|Password	|Confirmpassword|
+    |Frank			|Cy				|test001@gmail.com		|123Aa@		|123Aa@					|
+

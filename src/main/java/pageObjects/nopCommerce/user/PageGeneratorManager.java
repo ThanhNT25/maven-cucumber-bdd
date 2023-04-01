@@ -38,5 +38,8 @@ public class PageGeneratorManager {
 		return new UserCustomerInfoPageObject (driver);
 	}
 		
+	public static CommonPageObject getCommonPage(WebDriver driver) {
+		return new CommonPageObject (driver);
+	}
 
 }
